@@ -8691,7 +8691,7 @@ OMX_ERRORTYPE omx_vdec::fill_buffer_done(OMX_HANDLETYPE hComp,
             // (f) if marked EOS
 
             if(current_framerate <= (OMX_U32)m_dec_hfr_fps || m_last_rendered_TS == 0 ||
-               il_buffer->nTimeStamp == 0 || ts_delta >= (OMX_TICKS)target_ts_delta||
+               il_buffer->nTimeStamp == 0 || ts_delta >= (OMX_TICKS)(target_ts_delta + 1)||
                ts_delta == 0 || (il_buffer->nFlags & OMX_BUFFERFLAG_EOS)) {
                m_last_rendered_TS = il_buffer->nTimeStamp;
             } else {
