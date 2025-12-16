@@ -8677,7 +8677,7 @@ OMX_ERRORTYPE omx_vdec::fill_buffer_done(OMX_HANDLETYPE hComp,
         il_buffer = client_buffers.get_il_buf_hdr(buffer);
         OMX_U32 current_framerate = (int)(drv_ctx.frame_rate.fps_numerator / drv_ctx.frame_rate.fps_denominator);
 
-        if (il_buffer && m_last_rendered_TS >= 0) {
+        if (il_buffer && il_buffer->nTimeStamp >= 0 && m_dec_hfr_fps > 0 && buffer->nFilledLen > 0) {
             OMX_TICKS ts_delta = (OMX_TICKS)llabs(il_buffer->nTimeStamp - m_last_rendered_TS);
             // Convert fps into ms value. 1 sec = 1000000 ms.
             OMX_U64 target_ts_delta = m_dec_hfr_fps ? 1000000 / m_dec_hfr_fps : ts_delta;
