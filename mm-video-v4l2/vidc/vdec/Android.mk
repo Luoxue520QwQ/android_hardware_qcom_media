@@ -101,7 +101,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE                    := libOmxVdec
 LOCAL_MODULE_TAGS               := optional
 LOCAL_VENDOR_MODULE             := true
-LOCAL_CFLAGS                    := $(libmm-vdec-def) -Werror
+LOCAL_CFLAGS                    := $(libmm-vdec-def) -Werror -DVENUS_USES_LEGACY_MISR_INFO
 
 LOCAL_HEADER_LIBRARIES := \
         media_plugin_headers \
